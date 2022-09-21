@@ -1,0 +1,74 @@
+.accordiag {
+    --height: 10em;
+    margin-top: 2em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    line-height: 1em;
+}
+
+.accordiag > :first-child {
+    align-self: flex-start;
+}
+
+.accordiag > :last-child {
+    align-self: flex-end;
+}
+
+.accordiag details > * {
+    position: relative;
+    left: 1em;
+    margin-left: 1em;
+    padding: 0;
+}
+
+.accordiag details, .accordiag details ul {
+    transition: width 0.4s cubic-bezier(1,1.5,.65,.8);
+}
+
+.accordiag details ul {
+    list-style: none;
+    overflow: hidden;
+    width: 0;
+}
+
+.accordiag summary {
+    border: 1px solid blue;
+    background: white;
+    transform: translateX(calc(-50% + 0.5em)) rotate(-90deg);
+    transform-origin: center;
+    margin-left: 0;
+    margin-right: 0;
+    top: calc(50% - 0.5em);
+    left: 0;
+    list-style: none;
+    text-align: center;
+    width: calc(var(--height) + 10px);
+    transition: 0.15s background linear;
+}
+
+.accordiag summary:hover, .accordiag summary:focus {
+    background: aliceblue;
+}
+
+.accordiag details {
+    background: lightsteelblue;
+    vertical-align: middle;
+    height: var(--height);
+    transform: skew(-15deg);
+    box-sizing: border-box;
+    width: calc(1em + 1px);
+}
+
+.accordiag details.open {
+    width: 20ch;
+}
+
+.accordiag details.open > ul {
+    width: 20ch;
+}

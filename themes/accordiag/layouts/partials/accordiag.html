@@ -1,0 +1,23 @@
+<script type="application/javascript" src="/js/accordiag.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/accordiag.css"/>
+<nav class="accordiag">
+  <div class="left">innovate</div>
+  {{ $currentPage := . }}
+  {{ range .Site.Menus.main }}
+  <details open class="{{ if $currentPage.HasMenuCurrent "main" . }}active {{ end }}{{ .Identifier }}">
+    <summary>{{ .Name }}</summary>
+    {{ .Pre }}
+    {{ if .HasChildren }}
+    <ul>
+      {{ range .Children }}
+      <li class="{{ if $currentPage.IsMenuCurrent "main" . }}active{{ end }}">
+        <a href="{{ .URL }}">{{ .Name }}</a>
+      </li>
+      {{ end }}
+    </ul>
+    {{ end }}
+    {{ .Post }}
+  </details>
+  {{ end }}
+  <div class="right">invent</div>
+</nav>
